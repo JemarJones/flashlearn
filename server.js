@@ -1,13 +1,13 @@
 #!/bin/env node
-//  OpenShift sample Node application
+//  OpenShift Node application
 var express = require('express');
 var fs      = require('fs');
 
 
 /**
- *  Define the sample application.
+ *  Define the application.
  */
-var SampleApp = function() {
+var FlashLearn = function() {
 
     //  Scope.
     var self = this;
@@ -23,7 +23,7 @@ var SampleApp = function() {
     self.setupVariables = function() {
         //  Set the environment variables we need.
         self.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-        self.port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+        self.port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
         if (typeof self.ipaddress === "undefined") {
             //  Log errors on OpenShift but continue w/ 127.0.0.1 - this
@@ -35,33 +35,13 @@ var SampleApp = function() {
 
 
     /**
-     *  Populate the cache.
-     */
-    self.populateCache = function() {
-        if (typeof self.zcache === "undefined") {
-            self.zcache = { 'index.html': '' };
-        }
-
-        //  Local cache for static content.
-        self.zcache['index.html'] = fs.readFileSync('./index.html');
-    };
-
-
-    /**
-     *  Retrieve entry (content) from cache.
-     *  @param {string} key  Key identifying content to retrieve from cache.
-     */
-    self.cache_get = function(key) { return self.zcache[key]; };
-
-
-    /**
      *  terminator === the termination handler
      *  Terminate server on receipt of the specified signal.
      *  @param {string} sig  Signal to terminate on.
      */
     self.terminator = function(sig){
         if (typeof sig === "string") {
-           console.log('%s: Received %s - terminating sample app ...',
+           console.log('%s: Received %s - terminating app ...',
                        Date(Date.now()), sig);
            process.exit(1);
         }
@@ -95,14 +75,8 @@ var SampleApp = function() {
     self.createRoutes = function() {
         self.routes = { };
 
-        self.routes['/asciimo'] = function(req, res) {
-            var link = "http://i.imgur.com/kmbjB.png";
-            res.send("<html><body><img src='" + link + "'></body></html>");
-        };
-
         self.routes['/'] = function(req, res) {
-            res.setHeader('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
+            res.send("Coming Soon");
         };
     };
 
@@ -123,11 +97,10 @@ var SampleApp = function() {
 
 
     /**
-     *  Initializes the sample application.
+     *  Initializes the application.
      */
     self.initialize = function() {
         self.setupVariables();
-        self.populateCache();
         self.setupTerminationHandlers();
 
         // Create the express server and routes.
@@ -136,7 +109,7 @@ var SampleApp = function() {
 
 
     /**
-     *  Start the server (starts up the sample application).
+     *  Start the server (starts up the application).
      */
     self.start = function() {
         //  Start the app on the specific interface (and port).
@@ -146,14 +119,14 @@ var SampleApp = function() {
         });
     };
 
-};   /*  Sample Application.  */
+};   /*  Application.  */
 
 
 
 /**
  *  main():  Main code.
  */
-var zapp = new SampleApp();
+var zapp = new FlashLearn();
 zapp.initialize();
 zapp.start();
 
