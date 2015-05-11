@@ -2,7 +2,7 @@
 //  OpenShift Node application
 var express = require('express');
 var fs      = require('fs');
-
+var path = require('path')
 
 /**
  *  Define the application.
@@ -76,7 +76,13 @@ var FlashLearn = function() {
         self.routes = { };
 
         self.routes['/'] = function(req, res) {
-            res.send("Coming Soon");
+            res.sendFile(__dirname + '/views/choose.html');
+        };
+        self.routes['/cards'] = function(req, res) {
+            res.sendFile(__dirname + '/views/cards.html');
+        };
+        self.routes['/new'] = function(req, res) {
+            res.sendFile(__dirname + '/views/new.html');
         };
     };
 
@@ -87,8 +93,8 @@ var FlashLearn = function() {
      */
     self.initializeServer = function() {
         self.createRoutes();
-        self.app = express.createServer();
-
+        self.app = express();
+        self.app.use(express.static(path.join(__dirname, 'static')));
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);

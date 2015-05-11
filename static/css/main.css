@@ -1,0 +1,83 @@
+body{
+	background-color: rgba(44, 62, 80,1.0);
+	font-family:arial;
+	color: white;
+}
+
+nav{
+	height: 15%;
+	width: 101.5%;
+	background-color: rgba(192, 57, 43,1.0);
+	color: white;
+	margin-top: -22px;
+	margin-left: -10px;
+	padding-top:1%;
+	padding-left:1%;
+}
+
+
+#navName{
+	padding-top: 1%;
+	margin-left: 3%;
+	font-size: 1.3em;
+}
+#catContainer{
+	margin: 0 auto;
+	margin-top: 4%;
+	width: 90%;
+	background-color: rgba(255,255,255,0.1);
+	border-radius: 5px;
+	padding: 2%;
+
+}
+.cat{
+	display: inline-block;
+	margin-right: 35px;
+	margin-left: 35px;
+}
+.catPic{
+	width: 200px;
+	height: 200px;
+	border-radius: 100%;
+	/*border: 3px black solid;*/
+}
+.catname{
+	text-align: center;
+	font-size: 1.3em;
+}
+.subcat{
+	background-color: rgba(0,0,0,0.2);
+	border-radius: 5px;
+	padding: 1%;
+	margin: 0 auto;
+}
+ul{
+	display: inline-block;
+	list-style: none;
+	/*border-left: 3.5px white solid;
+	border-right: 3.5px white solid;*/
+	vertical-align: top;
+	width: 400px;
+	margin-right: 20px;
+}
+li{
+	margin-bottom: 5px;
+}
+.subcat a{
+	text-decoration: none;
+	color: white;
+	font-size: 20px;
+}
+footer{
+	margin: auto;
+	margin-top: 5%;
+	padding: 1% 2%;
+	text-align: center;
+	font-size: 0.7em;
+	width: 90%;
+	background-color: rgba(255,255,255,0.1);
+	border-radius: 5px;
+}
+footer a{
+	color: white;
+}
