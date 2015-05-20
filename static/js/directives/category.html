@@ -1,0 +1,11 @@
+<div class="cat">
+	<img ng-src="{{ info.image }}" class="catPic">
+	<p class="catname">{{ info.name }}</p>
+</div>
+<div class="subcat" style="display: none">
+	<table>
+		<tr ng-repeat="row in info.rows">
+			<td ng-repeat="entry in row"><a class= "catlink" data-catID="{{ info.name }}_{{ entry }}" href="./cards">{{ entry }}</a></td>
+		</tr>
+	</table>
+</div>

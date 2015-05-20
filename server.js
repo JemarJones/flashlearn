@@ -73,16 +73,20 @@ var FlashLearn = function() {
      *  Create the routing table entries + handlers for the application.
      */
     self.createRoutes = function() {
-        self.routes = { };
+        self.routes = {};
 
         self.routes['/'] = function(req, res) {
-            res.sendFile(__dirname + '/views/choose.html');
+            res.sendFile(__dirname + '/views/index.html');
         };
         self.routes['/cards'] = function(req, res) {
             res.sendFile(__dirname + '/views/cards.html');
         };
         self.routes['/new'] = function(req, res) {
             res.sendFile(__dirname + '/views/new.html');
+        };
+        //Returns all the different catogories each with its own info in format: [{name:"cat1", image:"cat1Url", subs:["cat1sub1","cat1sub2"]}]
+        self.routes['/catagories'] = function(req, res) {
+            res.send([{name: "Math", image: "./images/math.gif", subs: ["Calculus","Trig"]}, {name: "History", image: "./images/history.gif", subs: ["World War 2","American History"]},{name: "Geography", image: "./images/geo.gif", subs: ["Techtonics","Mountain Ranges"]},{name: "Chemistry", image: "./images/chem.gif", subs: ["Organic Chemistry","Bio Chemistry","Electro Chemistry"]}]);
         };
     };
 
@@ -98,6 +102,9 @@ var FlashLearn = function() {
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
+        }
+        for (var p in self.posts) {
+            self.app.post(p, self.posts[r]);
         }
     };
 

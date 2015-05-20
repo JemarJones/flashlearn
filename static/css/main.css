@@ -21,14 +21,13 @@ nav{
 	margin-left: 3%;
 	font-size: 1.3em;
 }
-#catContainer{
+#container{
 	margin: 0 auto;
 	margin-top: 4%;
 	width: 90%;
 	background-color: rgba(255,255,255,0.1);
 	border-radius: 5px;
 	padding: 2%;
-
 }
 .cat{
 	display: inline-block;
@@ -51,22 +50,18 @@ nav{
 	padding: 1%;
 	margin: 0 auto;
 }
-ul{
-	display: inline-block;
-	list-style: none;
-	/*border-left: 3.5px white solid;
-	border-right: 3.5px white solid;*/
-	vertical-align: top;
-	width: 400px;
-	margin-right: 20px;
-}
-li{
-	margin-bottom: 5px;
-}
-.subcat a{
+.catlink{
 	text-decoration: none;
 	color: white;
 	font-size: 20px;
+}
+table{
+	width: 100%;
+	text-align: center;
+}
+td{
+	width: 50%;
+
 }
 footer{
 	margin: auto;
